@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Nghe: Food Photography</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a2a3a;
+            --accent-pink: #e84393;
+            --correct-green: #2ecc71;
+            --wrong-red: #e74c3c;
+            --text-main: #2d3436;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
+                        url('https://images.unsplash.com/photo-1495195129352-aec325a55b65?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.98);
+            max-width: 850px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .header-group {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            font-size: 2.2rem;
+            margin: 0 auto 10px auto;
+            border-bottom: 3px solid var(--accent-pink);
+            display: table;
+            padding-bottom: 5px;
+        }
+
+        .sub-header {
+            color: #636e72;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .audio-section {
+            background: #f1f2f6;
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+            text-align: center;
+            border: 1px solid #dfe6e9;
+        }
+
+        audio { width: 100%; }
+
+        #result-summary {
+            display: none;
+            background: #f0fff4;
+            border: 2px solid var(--correct-green);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .transcript {
+            line-height: 2.2;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .line {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-left: 6px solid var(--accent-pink);
+        }
+
+        .speaker {
+            font-weight: 700;
+            color: var(--accent-pink);
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+        }
+
+        input {
+            border: none;
+            border-bottom: 3px solid #b2bec3;
+            background: #f9f9f9;
+            text-align: center;
+            font-size: 1.15rem;
+            font-family: inherit;
+            font-weight: 600;
+            color: #0984e3;
+            width: 140px;
+            padding: 5px 10px;
+            outline: none;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        input:focus {
+            background: #ebf5ff;
+            border-bottom-color: var(--accent-pink);
+        }
+
+        input.correct { border-bottom-color: var(--correct-green); color: var(--correct-green); background: #eafff2; }
+        input.wrong { border-bottom-color: var(--wrong-red); color: var(--wrong-red); background: #fff5f5; }
+
+        .controls {
+            text-align: center;
+            margin-top: 50px;
+            position: sticky;
+            bottom: 20px;
+        }
+
+        button {
+            background: var(--primary-dark);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: 0.4s ease;
+        }
+
+        button:hover {
+            background: var(--accent-pink);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(232, 67, 147, 0.3);
+        }
+
+        #answer-key {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-top: 4px solid var(--primary-dark);
+        }
+
+        .key-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            input { width: 110px; font-size: 1rem; }
+            h2 { font-size: 1.6rem; }
+            .sub-header { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-group">
+        <h2>Food Photography Workshop</h2>
+        <p class="sub-header">Tạo bởi Ms. Thúy - Chúc các em học tập tốt!</p>
+    </div>
+
+    <div class="audio-section">
+        <p style="margin-top:0; color:#2d3436; font-weight: 700;">🎧 Listen and complete the notes</p>
+        <audio id="myAudio" controls>
+            <source src="https://raw.githubusercontent.com/anhnguyen/test/main/Mindset_L1_27.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div id="result-summary"></div>
+
+    <div class="transcript">
+        <div class="line">
+            <span class="speaker">Student:</span>
+            Now can I just check the <input type="text" data-ans="details"> of the <input type="text" data-ans="course">?
+        </div>
+
+        <div class="line">
+            <span class="speaker">Receptionist:</span>
+            Sure, go ahead.
+        </div>
+
+        <div class="line">
+            <span class="speaker">Student:</span>
+            Now it says on the <input type="text" data-ans="leaflet">... um, let me find it... OK, got it! Right, so it's called <input type="text" data-ans="Food Photography">, and I've got here that it <input type="text" data-ans="begins"> at <input type="text" data-ans="9.30">.
+        </div>
+
+        <div class="line">
+            <span class="speaker">Receptionist:</span>
+            That's right – it's an <input type="text" data-ans="early"> start. It begins at half past <input type="text" data-ans="nine"> and it goes on until <input type="text" data-ans="four thirty">. Most of our <input type="text" data-ans="weekend"> courses are quite <input type="text" data-ans="short"> and so they're over in a <input type="text" data-ans="couple"> of hours – this course is <input type="text" data-ans="longer">. According to the <input type="text" data-ans="information"> I've got up here on <input type="text" data-ans="screen">, it's <input type="text" data-ans="7"> hours long.
+        </div>
+
+        <div class="line">
+            <span class="speaker">Student:</span>
+            Oh, I'm glad it <input type="text" data-ans="lasts"> for more than a few hours. I don't think I'd be able to learn how to take <input type="text" data-ans="good pictures"> in <input type="text" data-ans="less"> than seven hours.
+        </div>
+
+        <div class="line">
+            <span class="speaker">Receptionist:</span>
+            Basically, you'll learn how to take good photos of food using a <input type="text" data-ans="digital camera">. So it'll train you in the <input type="text" data-ans="basics"> of using a range of <input type="text" data-ans="camera angles">.
+        </div>
+
+        <div class="line">
+            <span class="speaker">Receptionist:</span>
+            Yes, you'll learn how to photograph food using <input type="text" data-ans="close-up"> shots, <input type="text" data-ans="wide angle"> shots and shots taken from <input type="text" data-ans="above">.
+        </div>
+
+        <div class="line">
+            <span class="speaker">Student:</span>
+            What about learning to <input type="text" data-ans="edit"> pictures on my computer?
+        </div>
+
+        <div class="line">
+            <span class="speaker">Receptionist:</span>
+            No, I'm afraid not. In fact, you'll spend some of the day on <input type="text" data-ans="location"> in a local <input type="text" data-ans="hotel">. It's the <input type="text" data-ans="Lincoln Hotel"> – you'll practise using real <input type="text" data-ans="dishes">!
+        </div>
+
+        <div class="line">
+            <span class="speaker">Receptionist:</span>
+            The <input type="text" data-ans="full fee"> of the course is <input type="text" data-ans="$55"> and that includes a light <input type="text" data-ans="lunch">.
+        </div>
+    </div>
+
+    <div id="answer-key">
+        <h3 style="margin-top:0; color:var(--primary-dark)">🔑 Answer Key:</h3>
+        <div class="key-grid" id="key-content"></div>
+    </div>
+
+    <div class="controls">
+        <button onclick="checkAnswers()">CHECK RESULTS</button>
+    </div>
+</div>
+
+<script>
+    function checkAnswers() {
+        const inputs = document.querySelectorAll('input');
+        let score = 0;
+        let keyHtml = '';
+
+        inputs.forEach((input, index) => {
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = input.getAttribute('data-ans').toLowerCase();
+            
+            if (userAnswer === correctAnswer) {
+                input.classList.remove('wrong');
+                input.classList.add('correct');
+                score++;
+            } else {
+                input.classList.remove('correct');
+                input.classList.add('wrong');
+            }
+            keyHtml += `<div><strong>${index + 1}.</strong> ${input.getAttribute('data-ans')}</div>`;
+        });
+
+        const summary = document.getElementById('result-summary');
+        summary.innerHTML = `<h3 style="margin:0">🎯 Kết quả: ${score} / ${inputs.length} đúng!</h3>
+                             <p style="margin:5px 0 0 0">Hãy đối chiếu đáp án chi tiết ở cuối trang.</p>`;
+        summary.style.display = 'block';
+
+        document.getElementById('key-content').innerHTML = keyHtml;
+        document.getElementById('answer-key').style.display = 'block';
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', function() {
+            this.style.width = (this.value.length + 3) + "ch";
+        });
+    });
+</script>
+
+</body>
+</html>
