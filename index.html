@@ -89,6 +89,8 @@
             line-height: 2.2;
             font-size: 1.2rem;
             color: var(--text-main);
+            /* Khởi tạo bộ đếm số cho ô trống */
+            counter-reset: hole-counter;
         }
 
         .line {
@@ -110,6 +112,21 @@
             letter-spacing: 1.5px;
         }
 
+        /* Container cho mỗi ô đục lỗ để chèn số thứ tự */
+        .hole-wrap {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .hole-wrap::before {
+            counter-increment: hole-counter;
+            content: "(" counter(hole-counter) ") ";
+            font-weight: 700;
+            color: var(--accent-pink);
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+
         input {
             border: none;
             border-bottom: 3px solid #b2bec3;
@@ -123,7 +140,7 @@
             padding: 5px 10px;
             outline: none;
             transition: all 0.3s ease;
-            margin: 0 5px;
+            margin: 0 2px;
             border-radius: 5px 5px 0 0;
         }
 
@@ -205,7 +222,7 @@
     <div class="transcript">
         <div class="line">
             <span class="speaker">Student:</span>
-            Now can I just check the <input type="text" data-ans="details"> of the <input type="text" data-ans="course">?
+            Now can I just check the <span class="hole-wrap"><input type="text" data-ans="details"></span> of the <span class="hole-wrap"><input type="text" data-ans="course"></span>?
         </div>
 
         <div class="line">
@@ -215,42 +232,42 @@
 
         <div class="line">
             <span class="speaker">Student:</span>
-            Now it says on the <input type="text" data-ans="leaflet">... um, let me find it... OK, got it! Right, so it's called <input type="text" data-ans="Food Photography">, and I've got here that it <input type="text" data-ans="begins"> at <input type="text" data-ans="9.30">.
+            Now it says on the <span class="hole-wrap"><input type="text" data-ans="leaflet"></span>... um, let me find it... OK, got it! Right, so it's called <span class="hole-wrap"><input type="text" data-ans="Food Photography"></span>, and I've got here that it <span class="hole-wrap"><input type="text" data-ans="begins"></span> at <span class="hole-wrap"><input type="text" data-ans="9.30"></span>.
         </div>
 
         <div class="line">
             <span class="speaker">Receptionist:</span>
-            That's right – it's an <input type="text" data-ans="early"> start. It begins at half past <input type="text" data-ans="nine"> and it goes on until <input type="text" data-ans="four thirty">. Most of our <input type="text" data-ans="weekend"> courses are quite <input type="text" data-ans="short"> and so they're over in a <input type="text" data-ans="couple"> of hours – this course is <input type="text" data-ans="longer">. According to the <input type="text" data-ans="information"> I've got up here on <input type="text" data-ans="screen">, it's <input type="text" data-ans="7"> hours long.
+            That's right – it's an <span class="hole-wrap"><input type="text" data-ans="early"></span> start. It begins at half past <span class="hole-wrap"><input type="text" data-ans="nine"></span> and it goes on until <span class="hole-wrap"><input type="text" data-ans="four thirty"></span>. Most of our <span class="hole-wrap"><input type="text" data-ans="weekend"></span> courses are quite <span class="hole-wrap"><input type="text" data-ans="short"></span> and so they're over in a <span class="hole-wrap"><input type="text" data-ans="couple"></span> of hours – this course is <span class="hole-wrap"><input type="text" data-ans="longer"></span>. According to the <span class="hole-wrap"><input type="text" data-ans="information"></span> I've got up here on <span class="hole-wrap"><input type="text" data-ans="screen"></span>, it's <span class="hole-wrap"><input type="text" data-ans="7"></span> hours long.
         </div>
 
         <div class="line">
             <span class="speaker">Student:</span>
-            Oh, I'm glad it <input type="text" data-ans="lasts"> for more than a few hours. I don't think I'd be able to learn how to take <input type="text" data-ans="good pictures"> in <input type="text" data-ans="less"> than seven hours.
+            Oh, I'm glad it <span class="hole-wrap"><input type="text" data-ans="lasts"></span> for more than a few hours. I don't think I'd be able to learn how to take <span class="hole-wrap"><input type="text" data-ans="good pictures"></span> in <span class="hole-wrap"><input type="text" data-ans="less"></span> than seven hours.
         </div>
 
         <div class="line">
             <span class="speaker">Receptionist:</span>
-            Basically, you'll learn how to take good photos of food using a <input type="text" data-ans="digital camera">. So it'll train you in the <input type="text" data-ans="basics"> of using a range of <input type="text" data-ans="camera angles">.
+            Basically, you'll learn how to take good photos of food using a <span class="hole-wrap"><input type="text" data-ans="digital camera"></span>. So it'll train you in the <span class="hole-wrap"><input type="text" data-ans="basics"></span> of using a range of <span class="hole-wrap"><input type="text" data-ans="camera angles"></span>.
         </div>
 
         <div class="line">
             <span class="speaker">Receptionist:</span>
-            Yes, you'll learn how to photograph food using <input type="text" data-ans="close-up"> shots, <input type="text" data-ans="wide angle"> shots and shots taken from <input type="text" data-ans="above">.
+            Yes, you'll learn how to photograph food using <span class="hole-wrap"><input type="text" data-ans="close-up"></span> shots, <span class="hole-wrap"><input type="text" data-ans="wide angle"></span> shots and shots taken from <span class="hole-wrap"><input type="text" data-ans="above"></span>.
         </div>
 
         <div class="line">
             <span class="speaker">Student:</span>
-            What about learning to <input type="text" data-ans="edit"> pictures on my computer?
+            What about learning to <span class="hole-wrap"><input type="text" data-ans="edit"></span> pictures on my computer?
         </div>
 
         <div class="line">
             <span class="speaker">Receptionist:</span>
-            No, I'm afraid not. In fact, you'll spend some of the day on <input type="text" data-ans="location"> in a local <input type="text" data-ans="hotel">. It's the <input type="text" data-ans="Lincoln Hotel"> – you'll practise using real <input type="text" data-ans="dishes">!
+            No, I'm afraid not. In fact, you'll spend some of the day on <span class="hole-wrap"><input type="text" data-ans="location"></span> in a local <span class="hole-wrap"><input type="text" data-ans="hotel"></span>. It's the <span class="hole-wrap"><input type="text" data-ans="Lincoln Hotel"></span> – you'll practise using real <span class="hole-wrap"><input type="text" data-ans="dishes"></span>!
         </div>
 
         <div class="line">
             <span class="speaker">Receptionist:</span>
-            The <input type="text" data-ans="full fee"> of the course is <input type="text" data-ans="$55"> and that includes a light <input type="text" data-ans="lunch">.
+            The <span class="hole-wrap"><input type="text" data-ans="full fee"></span> of the course is <span class="hole-wrap"><input type="text" data-ans="$55"></span> and that includes a light <span class="hole-wrap"><input type="text" data-ans="lunch"></span>.
         </div>
     </div>
 
